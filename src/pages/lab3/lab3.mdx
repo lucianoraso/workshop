@@ -1,0 +1,128 @@
+---
+title: Lab 3  - Coordinare diversi servizi
+description: Orchestrazione API
+---
+
+## Laboratorio 3 - Orchestrazione API 
+
+L'obiettivo del laboratorio è quello di creare una nuova API orchestrando  le API create nei laboratori precedenti.
+Anche in questo caso l'API accetta come parametro di input il "codice fiscale".
+
+1. Colleghiamoci all'ambiente di laboratorio con utenza e password
+    
+![Accesso](/docs/images/Lab3/Lab3-16-33-39.png)
+
+2.  Accediamo all'Ace Designer
+    
+![Accesso](/docs/images/Lab3/Lab3-16-33-54.png)
+
+3. Clicchiamo sul menù a sinistra per accedere alla Dashboard  
+    
+![Lab2](/docs/images/Lab3/Lab3-16-34-02.png)
+
+4. Inseriamo nel campo di ricerca il prefisso asegnato (Devxx); dovranno essere visuulizzate le API sviluppate nel lab precedenti
+    
+![Lab2](/docs/images/Lab3/Lab3-a-15-55-43.png)
+
+5. Quindi clicchiamo sul menù nell'angolo di sinistra di ciascuna delle 2 API  e selezioniamo export
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-05-37.png)
+
+6. Selezionamo la voce evidenziata nell'immagine seguente e clicchiamo Export, salvando il file yaml in una posizione da cui recuperarla in seguito
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-16-52.png)
+
+7. Facciamo lo stesso per la seconda API 
+
+8. A questo punto clichiamo su catalog nel menù di sinistra
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-21-02.png)
+
+9. Sulla schermata del catalogo dei connettori clicchiamo sul \+
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-21-45.png)
+
+10. Selezioniamo OpenApi dalla listbox
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-25-52.png)
+
+11. e quindi importiamo uno alla volta i file swagger esportati in precedenza
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-27-20.png)
+    
+![Alt text](images/Lab3/Lab3-a-16-28-55.png)
+12. seguendo i passi evidenziati 
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-31-18.png)
+
+![Alt text](/docs/images/Lab3/Lab3-a-16-32-59.png)
+
+13. sulla pagina che compare inserire il prefisso Devxx assegnato nel campo di ricerca e quindi cliccare su connect
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-34-53.png)
+
+14. Inserire userid <strong>(PWUf03TJ)</strong> e password <strong>(3bXDBToKF1Aji9PE7m2ncYsHGLde8V46)</strong> utilizzati per la basic autenticazion
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-36-46.png)
+
+15. quindi cliccare su connect
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-46-17.png)
+
+16. ripetiamo gli stessi passi anche per l'altra API esportata
+
+17. A questo punto siamo pronti per impementare la nuova API di orchestrazione
+Clicchiano nuovamente sul bottone Dashboard a sinistra
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-47-25.png)
+
+18. e quindi creiamo l'API selezionando il menu describe (che carica un template con il modello già definito)
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-51-14.png)
+
+19. nella finestra che compare inseriamo il TAG INPS, esppandiamo la finestra con i risultati della ricerca e quindi clicchiamo sul + a sinistra della voce "Orchestrazione Estratto Conto Template"
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-54-55.png)
+
+20. Modifichiamo il nome dell'API rimuovendo la parola template finale e anteponiamo il solito prefisso Devxx assegnato e creiamo una custom operatopn come visto in precedenza
+    
+![Alt text](/docs/images/Lab3/Lab3-a-16-58-39.png)
+
+21. Compiliamo i campi della custom operation come visto in precedenza e clicchiamo "Implement Flow"
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-03-34.png)
+
+22. Clicchimo sul bottone "+", quindi inseriamo il prefisso assegnato Devxx nel campo di ricerca e selezioniamo l'API "Dati Utente da richiamare"
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-07-14.png)
+
+23. Ripetiamo gli stessi passi per la seconda API
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-10-03.png)
+
+23. A questo punto clicchiamo su response e mappiamo i campi sul modello di output: 
+<strong>Attenzione: clicare il link "All Mappings" se non compaiono i campi richiesti</strong>
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-13-41.png)
+
+24. Completare il mapping di tuttti i campi
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-17-22.png)
+
+25. Prima di eseguire il test è necessario tornare sulla Dashboard e far partire le 2 API richiamate
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-22-52.png)
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-23-01.png)
+
+26. Ritornare sulla API di orchestrazione 
+
+27. Cliccare sulla request e inserire uno dei codici fiscali forniti
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-18-50.png)
+
+28. Clicare sul bottone per eseguire il test
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-20-40.png)
+    
+![Alt text](/docs/images/Lab3/Lab3-a-17-29-48.png)

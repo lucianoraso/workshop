@@ -1,0 +1,233 @@
+---
+title: Lab 2 - Leggere i dati da un DB
+description: Creare un API per leggere i dati da un database attraverso un connettore JDBC
+---
+
+# Creazione di un'API per accesso ad un Database
+
+<PageDescription>
+
+L'obiettivo del primo laboratorio è quello di creare un flusso di integrazione che esponga i dati di un DB attraverso un API. Il laboratorio è stato già predisposto, creando una connessione ad un Database DB2 di test.
+<br></br>
+
+</PageDescription>
+
+
+1. Colleghiamoci all'ambiente di laboratorio con utenza e password
+
+![IBM Design](docs/images/Lab1/Lab1-16-33-39.png)
+  
+2. Selezioniamo la voce <strong>ace-designer</strong> per accedere al menù di creazione dei flussi di integrazione
+
+![Lab1](/docs/images/Lab1/Lab1-16-33-54.png)
+
+3. Clicchiamo sulla voce <strong>Create a flow by describing and integration</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-14-03.png)
+
+4. Cerchiamo nella barra di ricerca, i modelli di integrazione relativi al workshop, digitando il tag <strong>INPS</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-14-16.png)
+
+5. Visualizziamo la voce <strong>View matching templates</strong> per visualizzare i template e apriamo la voce <strong>Righe Estratto Conto Template</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-18-07.png)
+
+6. Clicchiamo sul pulsante <strong>+</strong> sulla destra per creare il flusso (<strong>Create from asset</strong>)
+
+![Lab1](/docs/images/Lab1/Lab1-20-18-10.png)
+
+7. <strong>Importante!</strong> Rinominiamo il flusso in alto inserendo il nome del proprio utente (Dev xx)
+
+![Lab1](/docs/images/Lab1/Lab1-20-20-03.png)
+
+8. Andiamo a visualizzare le <strong>proprietà</strong> del modello dati
+
+![Lab1](/docs/images/Lab1/Lab1-20-20-07.png)
+
+9. Clicchiamo sul tab <strong>Operations</strong>><strong>Add a custom operation</strong> per creare una nuova azione
+
+![Lab1](/docs/images/Lab1/Lab1-20-20-13.png)
+
+10. Completiamo il riquadro che descriva la nostra operation (Display name, operation name, HTTP verb=GET, Query Parameters=CODFIS) e clicchiamo sul pulsante <strong>Impelement Flow</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-20-56.png)
+
+11. Clicchiamo il pulsante <strong>+</strong> al centro del flusso per aggiungere la connessione al DB
+
+![Lab1](/docs/images/Lab1/Lab1-20-21-12.png)
+
+12. Ricerchiamo il connettore di tipo JDBC, verifichiamo che sia selezionata la connessione <strong>Account 1</strong> e clicchiamo sulla voce <strong>custom query</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-21-23.png)
+
+13. Inseriamo una semplice query che ci permetta di recuperare i dati dalle tabeelle sul db
+
+![Lab1](/docs/images/Lab1/Lab1-20-22-19.png)
+
+<code>
+select * from NPT06801.RIGACONTRIBUTO as A, NPT06801.AZIENDA as B, where a.AziendaCodice =b.codiceAzienda and a.CF=
+</code>
+
+14. Clicchiamo sul pulsante sulla destra per ricercare ed associare il campo <strong>CODIFS</strong> alla query
+
+![Lab1](/docs/images/Lab1/Lab1-20-22-26.png)
+
+15. Clicchiamo sul pulante a destra per confermare l'inserimento
+
+![Lab1](/docs/images/Lab1/Lab1-20-22-43.png)
+
+16. Inseriamo un codice fiscale di esempio per verificare che la query sia stata correttamente inserita: (es codfis: RSSRST70A01F205X)
+
+![Lab1](/docs/images/Lab1/Lab1-20-23-03.png)
+
+17. Clicchiamo sul pulsante sulla destra per testare il componente (<strong>Try this action</strong>)
+
+![Lab1](/docs/images/Lab1/Lab1-20-23-10.png)
+
+18. Clicchiamo sul bottone <strong>Continua</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-23-19.png)
+
+19. Verifichiamo il risultato cliccando su <strong>View results</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-23-23.png)
+
+20. Si aprirà una finestra sulla destra che ci mostrerà i dati recuperati
+
+![Lab1](/docs/images/Lab1/Lab1-20-23-27.png)
+
+21. Cliccando sul tab output potremmo analizzare i dati recuperati
+
+![Lab1](/docs/images/Lab1/Lab1-20-23-30.png)
+
+22. Torniamo nella finestra principale e aggiungiamo un parsing dei dati json a valle del recupero dei dati cliccado sull'immagine <strong>+</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-24-00.png)
+
+23. Selezioniamo il tab <strong>toolbox</strong> e la voce <strong>JSON parser</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-24-04.png)
+
+24. Clicchiamo sul bottone a desta ed andiamo a selezionare la voce <strong>Data</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-00.png)
+
+25. In questo modo comparirà la voce di dettaglio con il JSON di esempio
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-11.png)
+
+26. Clicchiamo su <strong>Generata Schema</strong> per recuperare il formato dei dati
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-15.png)
+
+27. Nella parte in basso, verrà creato uno schema dati JSON a partire dai dati di esempio
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-23.png)
+
+28. Ritorniamo sul flusso principale e clicchiamo sull'ultimo blocco <strong>Response</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-30.png)
+
+29. Clicchiamo sull bottone a destra in corrispondenza della voce <strong>righe</strong> e selezioniamo la voce <strong>Parsed JSON</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-42.png)
+![Lab1](/docs/images/Lab1/Lab1-20-25-47.png)
+
+30. Associamo al campo <strong>progressivo</strong> il campo <strong>PROGRESSIVO</strong> recuperato dal JSON
+
+![Lab1](/docs/images/Lab1/Lab1-20-25-54.png)
+
+31. Continuiamo l'associazione dei campi selezionando il campo <strong>dal</strong> 
+
+![Lab1](/docs/images/Lab1/Lab1-20-26-11.png)
+
+32. Completiamo l'associazione per tutit gli altri campi (Tipo-contribuzione, tipo-contributo, diritto, calcolo, euro, lire, codice e descrizione) come indicato nell'immagine
+
+![Lab1](/docs/images/Lab1/Lab1-20-27-29.png)
+
+33. Clicchiamo sul bottone in alto <strong>Try this action</strong> per testare il flusso
+
+![Lab1](/docs/images/Lab1/Lab1-20-27-35.png)
+
+34. Clicchiamo su <strong>Continue</strong> nel messaggio di warning
+
+![Lab1](/docs/images/Lab1/Lab1-20-27-38.png)
+
+35. Verifichiamo che i dati siano stati effettivamente recuperati (200 OK) e clicchiamo sulla voce <strong>view results</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-27-41.png)
+
+36. Passiamo alla modalità <strong>Output</strong> e <strong> < / ></strong> per verificare il sorgente di output della risposta
+![Lab1](/docs/images/Lab1/Lab1-20-27-51.png)
+
+37. Chiudiamo il menù di output
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-08.png)
+
+38. Adniamo infine ad aggiungere nel flusso principale un ulteriore step cliccando sull'immagine <strong>+</strong>, prima della figura <strong>Response</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-14.png)
+
+39. Ricerchiamo il connettore <strong>Kafka</strong>, verifichiamo che l'account selezionato sia <strong>Account 1</strong> ed all'interno della voce <strong>Message</strong>, selezioniamo il campo <strong>Send message</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-27.png)
+
+40. Selezioniamo il topic Kafka su cui andare ad inviare il messaggio
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-33.png)
+
+41. Selezioniamo il topic <strong>WORKSHOP</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-38.png)
+
+42. Completiamo i campi in basso per associare la coppia chiave valore del messaggio, indicando come:
+ClientID = DEVXXX (nome utente) e selsezioniamo il valore Key = OBject>CODIFIS
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-59-0.png)
+
+43. Aggiungiamo il prefisso DEVXX- con il proprio nome utente al valore <strong>key</strong>, in modo che ogni utente pubblicherà i messaggi con una chiave diversa.
+
+![Lab1](/docs/images/Lab1/Lab1-20-28-59-1.png)
+
+44. Selezioiamo per la voece <strong>Payload</strong> il menù a destra> <strong>All messages</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-29-06.png)
+
+45. Associamo il campo <strong>jdbc>Data</strong> al campo <strong>Payload</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-29-54.png)
+
+46. Clicchiamo sul tasto in alto <strong>Try this flow</strong> per testare nuovamente il flusso
+
+![Lab1](/docs/images/Lab1/Lab1-20-30-20.png)
+
+47. Verifichiamo che la risposta sia 200 OK e andiamo a verificare che il messaggio sia stato scritto anche su Kafka cliccando sull'hamburger menù in alto a sinistra
+
+![Lab1](/docs/images/Lab1/Lab1-20-30-30-01.png)
+
+48. Navighiamo nel menù e clicchiamo la voce <strong>Amminstration>Integration Instances</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-30-48.png)
+
+49. Clicchiamo sulla voce <strong>event-streams</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-31-01.png)
+
+50. Clicchiamo sulla seconda icona del menù sulla sinistra <strong>topics</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-31-11.png)
+
+51. Clicchiamo sul topic <strong>WORKSHOP</strong>
+
+![Lab1](/docs/images/Lab1/Lab1-20-31-14.png)
+
+52. Verifichiamo all'interno dei topic la presenza dei messaggi
+
+![Lab1](/docs/images/Lab1/Lab1-20-31-28.png)
+
+53. Analizziamo l'output del messaggio inserito
+
+![Lab1](/docs/images/Lab1/Lab1-20-31-35.png)
+
+![Lab1](/docs/images/Lab1/Lab1-20-32-07.png)

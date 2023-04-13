@@ -1,0 +1,86 @@
+---
+title: Lab 4  - Esposizione di API
+description: Esposizione di API sviluppato con ACE Designer in API Connect
+---
+
+# Lab4 - Esposizione di API sviluppato con ACE Designer in API Connect
+
+L'obiettivo del laboratorio è quello di esporre l'API di orchestrazione implementata nel LAb 3 su API Connect.
+
+
+1. Colleghiamoci all'ambiente di laboratorio con utenza e password
+    
+![Accesso](/docs/images/Lab4/Lab3-16-33-39.png)
+
+2.  Accediamo all'Ace Designer
+    
+![Accesso](/docs/images/Lab4/Lab3-16-33-54.png)
+
+3. Clicchiamo sul menù a sinistra per accedere alla Dashboard  
+    
+![Lab2](/docs/images/Lab4/Lab3-16-34-02.png)
+
+4. Inseriamo nel campo di ricerca il prefisso asegnato (Devxx); dovranno essere visuulizzate le API sviluppate nel lab precedenti
+    
+![Lab2](/docs/images/Lab4/Lab4-a-15-55-43.png)
+
+5. Selezioniamo l'API "Devxx Orchestrazione Estratto conto" e quindi selezionare il tab "Gateway"  
+    Qui è possibile vedere (o anche modificare se fosse il caso) la definizoine dell'API per API Connect nel quale potrà essere successivamente importata  
+    Espandere le varie voci del menù di sinistra per visualizzare la definizione di questa API
+    
+![Alt text](/docs/images/Lab4/Lab4-10.02.02.png)
+
+6. Per continuatre clicchiamo sul tasto dashboard e assicuriamoci di avere il prefisso assegnato (Devxx)  nel campo di ricerca  
+
+![Alt text](/docs/images/Lab4/Lab4-b-22.45.07.png)  
+
+7. Quindi clicchiamo sul menù nell'angolo di destra dell'API "Devxx Orchestrazione Estratto conto" sviluppata nel Lab3 e selezioniamo export 
+
+![Alt text](/docs/images/Lab4/Lab4-b-22.50.02.png)  
+
+8. Esportiamo "OpenAPI V3.0 YAML and Runtime flow BAR assets (ZIP)"  
+
+![Alt text](/docs/images/Lab4/Lab4-b-22.56.05.png)  
+
+9. Lo zip salvato contiene i seguenti 2 file:  
+
+![Alt text](/docs/images/Lab4/Lab4-b-22.58.06.png)  
+
+Lo YAML ci servirà qualche step più avanti
+
+10. Torniamo sulla lista delle istanze di integrazione  
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.02.12.png)
+
+11. e selezioniamo "apic medium" come indicato in figura **(facendo attenzione a selezionare la voce con il tipo "API Management" nel caso comparissero più voci)**  
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.05.02.png)
+
+12. se compare la finestra di login seleziona "Common Services User Registry"  
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.10.36.png)
+
+13. Selezioniamo "Develop APIs and products", poi il bottone in alto a destra "Add", e successivamente "API (from REST, GraphQL or SOAP)")
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.13.32.png)
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.17.21.png)
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.19.27.png)
+
+15. A questo punto selezionare "OpenAPI 3.0" e "Import  -> Existing OpenAPI" e infine clicchiamo sul tasto "Next" 
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.25.48.png)
+
+![Alt text](/docs/images/Lab4/Lab4-b-23.28.45.png)
+
+16. Speicfichiamo nella casella di upload il file YAML contenuto nel file zip scaricato precedentemente e quindi "Next"  
+
+![Alt text](/docs/images/Lab4/Lab4-c-23.31.04.png)  
+
+17. Selezioniamo Next fino ad arrivare alla seguente schermata, sulla quale dovremo cliccare sul bottone "Edit"  
+
+![Alt text](/docs/images/Lab4/Lab4-c-23.35.19.png)
+
+18. Abbiamo così ottenuto un'API "managed" che richiama il servizio di orchestrazione (esposto a sua volta come REST) sviluppato con ACE Designer.  
+    Di quest'ultima API è possibile gestire il cilo di vita, la sicurezza, la pubblicazione sul "Developer Portal" proprio in ottica di "API Management"

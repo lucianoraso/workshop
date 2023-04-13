@@ -1,0 +1,180 @@
+---
+title: Lab 1 - Leggere i dati da SalesForce
+description: Creare un API per leggere i dati da un esterno come SalesForce
+---
+
+# Creazione di un'API per accedere a dati presenti su un tool esterno come SalesForce
+
+<PageDescription>
+
+L'obiettivo del secondo laboratorio è quello di creare un API in grado di recuperare dei dati da Salesforce, utilizzando il codice fiscale come chiave primaria. Il laboratorio è stato già predisposto, creando la connessione ad un ambiente Salesforce di test ed inserendo nell'anagrafica di base il campo "codice fiscale".
+<br></br>
+
+</PageDescription>
+
+1.  Colleghiamoci all'ambiente di laboratorio con utenza e password
+
+![Accesso](/docs/images/Lab2/Lab2-16-33-39.png)
+
+2.  Accediamo all'Ace Designer
+
+![Accesso](/docs/images/Lab2/Lab2-16-33-54.png)
+
+3. Clicchiamo sul menù a sinistra per accedere alla Dashboard 
+
+![Lab2](/docs/images/Lab2/Lab2-16-34-12.png)
+
+4. Clicchiamo sul pulsante a destra (New > Flow for an API)
+
+![Lab2](/docs/images/Lab2/Lab2-16-35-38.png)
+
+5. Nella pagina del Designer andremo a creare il nostro flusso di integrazione
+
+![Lab2](/docs/images/Lab2/Lab2-16-51-16.png)
+
+6. <strong>Importante!</strong> Inseriamo in alto a sinistra un nome univoco del flusso ad esempio usando il proprio nome utente (es DEVxx-Lab2). Per cominciare a creare il primo flusso e reperire i dati dell'utente Salesforce, inserire il nome del campo da recuperare (es utente)
+ e clicchiamo sul pulsante <strong>Create model</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-16-58-04.png)
+
+7. Cominciamo a riempire l'elenco dei campi che andremo a recuperare da Salesforce, definendo per ogni campo il tipo di dato. (es id -> stringa)
+ 
+![Lab2](/docs/images/Lab2/Lab2-16-58-19.png)
+
+8. nome, cognome, codfis -> stringa
+
+![Lab2](/docs/images/Lab2/Lab2-16-58-31.png)
+
+9. possiamo anche inserire oggetti più complessi, come l'indirizzo, cliccando sul campo <strong>Object</strong> , e compilando i vari campi dell'indirizzo 
+
+![Lab2](/docs/images/Lab2/Lab2-16-58-57.png)
+
+10. Aggiungiamo gli ultimi campi dell'inidrizzo (via, città provincia, cap)
+
+![Lab2](/docs/images/Lab2/Lab2-16-59-15.png)
+
+11. Una volta terminato il modello dati da riempire, andiamo a recuperare i dati da Salesforce aggiungendo un <strong>operations</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-16-59-39.png)
+
+12. Clicchiamo su <strong>Add custom operation</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-00-14.png)
+
+13. Creiamo una richiesta di tipo <strong>GET</strong> compilare i campi come nell'immagine
+
+![Lab2](/docs/images/Lab2/Lab2-17-01-01.png)
+
+14. A questo punto andremo ad inserire il connettore per recuperare i campi esternamente 
+
+![Lab2](/docs/images/Lab2/Lab2-17-01-31.png)
+
+15. Clicchiamo sul tasto <strong>+</strong> al centro dell'immagine e selezioniamo Salesforce come connettore 
+
+![Lab2](/docs/images/Lab2/Lab2-17-01-38.png)
+
+16. Clicchiamo sull'operazione <strong>Retrieve contacts</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-01-57.png)
+
+17. Cerchiamo e selezioiamo il campo chiave <strong>codice fiscale</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-02-50.png)
+
+18. Nel box alla destra, clicchiamo sul pulsante azzurro per collegare il campo ad i campi creatin precedenza 
+
+![Lab2](/docs/images/Lab2/Lab2-17-02-56.png)
+
+19. Ricerchiamo il campo <strong>CODFIS</strong> inserito in precedenza
+
+![Lab2](/docs/images/Lab2/Lab2-17-03-02.png)
+
+20. Selezioniamo i parametri affinché ci venga restituito un solo elemento dalla query 
+
+![Lab2](/docs/images/Lab2/Lab2-17-03-38.png)
+
+21. A questo punto possimao effettuare un primo test, utilizzando un codice fiscale di esempio per verificare che la connessione è andata a buon fine. Inseriamo il codice fiscale di esempio: <strong>RSSRSI70A01F205X</strong> nel riquadro sulla sinistra
+
+![Lab2](/docs/images/Lab2/Lab2-17-03-58.png)
+
+22. Clicchiamo sul pulsante <strong>Try this action</strong> sulla destra  
+
+![Lab2](/docs/images/Lab2/Lab2-17-04-01.png)
+
+23. Verifichiamo che la query avvenga con successo (200 Ok.) Prestare attenzione ad eventuali altri errori (404, 500, ecc..)
+ 
+![Lab2](/docs/images/Lab2/Lab2-17-04-07.png)
+
+24. Cliccando su <strong>View details</strong> vedremo tutti i campi del contatto recuperato da Salesforce 
+
+![Lab2](/docs/images/Lab2/Lab2-17-04-11.png)
+
+25. Chiudiamo il menù selezionato in alto a destra 
+
+![Lab2](/docs/images/Lab2/Lab2-17-04-15.png)
+
+26. Andiamo a creare la gestione dell'eccezione in funzione del codice restituito dalla chiamata. Clicchiamo sempre sul pulsanto <strong>+</strong> a valle dell connettore Salesforces e aggiungiamo dal menù <strong>Toolbox</strong> una condizione di tipo <strong>if (conditional)
+</strong>
+
+![Lab2](/docs/images/Lab2/Lab2-17-07-15.png)
+
+27. Editiamo la condizione cliccando sul blocco if appena creato
+
+![Lab2](/docs/images/Lab2/Lab2-17-07-19.png)
+
+28. Clicchiamo sul pulsante azzurro per ricercare il campo su cui effettuare la verifica
+
+![Lab2](/docs/images/Lab2/Lab2-17-07-27.png)
+
+29. Ricerchiamo e selezioniamo il campo <strong>Status code</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-07-31.png)
+
+30. Inseriamo il vaore <strong>204</strong> come status code per la condizione di sccesso. Editiamo invece il messaggio di errore per (Es Nessun dato trovato per -> Selezioniamo il campo CodFis)
+ 
+
+![Lab2](/docs/images/Lab2/Lab2-17-07-59.png)
+
+31. Clicchiamo a qusto punto invece sul blocco a destra <strong>Response</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-08-12.png)
+
+32. Cominciamo a fare l'assegnazione dei campi recuperati da Salesforce con i campi inseriti inizialmente. Clicchiamo ad esempio sul bottona a destra relativo al  campo <strong>nome</strong> e clicchiamo sul menù <strong>All mappings</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-08-23.png)
+
+33. Associamo il campo nome, al campo <strong>First name</strong> recuperato da Salesforce 
+
+![Lab2](/docs/images/Lab2/Lab2-17-08-41.png)
+
+34. Continuiamo allo stesso modo ad associare tutti gli altri campi (Cognome -> Last Name, codfis -> Codice Fiscale)
+ 
+![Lab2](/docs/images/Lab2/Lab2-17-09-22.png)
+
+35. Completiamo anche l'associazione dei campi dell'indirizzo facendo riferimento alla voce <strong>Mailing street</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-09-37.png)
+
+36. Associamo tutti i restanti campi dell'indirizzo come indicato nelle immagini 
+
+![Lab2](/docs/images/Lab2/Lab2-17-10-12.png)
+
+37. Una volta terminata l'associazione, clicchiamo sul pulsante in alto <strong>Try this flow</strong> 
+
+![Lab2](/docs/images/Lab2/Lab2-17-10-22.png)
+
+38. Clicchiamo su <strong>Continue</strong> al messaggio di warning 
+
+![Lab2](/docs/images/Lab2/Lab2-17-10-27.png)
+
+39. Verifichiamo che la query dell'intero flusso sia andata a buon fine e clicchiamo sul testo <strong>View details</strong> per analizzare la risposta 
+
+![Lab2](/docs/images/Lab2/Lab2-17-10-30.png)
+
+40. Clicchiamo sul tab di <strong>Output</strong> per verificare la correttezza dei dati recuperati
+
+![Lab2](/docs/images/Lab2/Lab2-17-10-33.png)
+
+41. Per visualizzare la risposta in formato JSON, possiamo anche cliccare sul pulsante <strong> < / ></strong> in alto a destra
+
+![Lab2](/docs/images/Lab2/Lab2-17-33-49.png)

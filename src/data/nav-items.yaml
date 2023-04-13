@@ -1,0 +1,27 @@
+- title: Descrizione del workshop
+  pages:
+    - path: /descrizione
+  hasDivider: true
+- title: Lab 1 -  Integrazione con SalesForceLeggere dati da un DB
+  pages:
+    - path: /lab1/lab1
+- title: Lab 2 - Leggere dati da un DB
+  pages:
+    - path: /lab2/lab2
+- title: Lab 3 - Coordinare diversi servizi
+  pages:
+    - path: /lab3/lab3
+- title: Lab 4 - Esposizione di API
+  pages:
+    - path: /lab4/lab4
+- title: Overview ACE Toolkit
+  pages:
+    - path: /lab5/lab5    
+  hasDivider: true
+- title: Dati di test
+  pages:
+    - path: /testdata
+  hasDivider: true
+- title: DevOps
+  pages:
+    - path: /devops
