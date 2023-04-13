@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-index-mdx",
+    "path": "/",
+    "result": {"pageContext":{"frontmatter":{"description":"","title":""},"relativePagePath":"/index.mdx","titleType":"page","MdxNode":{"id":"97758ca6-c22c-5688-a2d7-e208d91f1c6b","children":[],"parent":"a813a647-9755-5ca4-b146-b141ec54fd26","internal":{"content":"import HomepageTemplate from '../components/Homepage.js';\nexport default HomepageTemplate;\n\n\n","type":"Mdx","contentDigest":"f12ec918c0e6b7d6ff355b0974d9616a","owner":"gatsby-plugin-mdx","counter":240},"frontmatter":{"description":"","title":""},"exports":{},"rawBody":"import HomepageTemplate from '../components/Homepage.js';\nexport default HomepageTemplate;\n\n\n","fileAbsolutePath":"/Users/luciano/GH-REPOS/workshop/src/pages/index.mdx"}}},
+    "staticQueryHashes": ["1364590287","137577622","2102389209","2456312558","2746626797","3018647132","3037994772","768070550"]}
